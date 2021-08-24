@@ -18,6 +18,7 @@ public class oppg1135 {
                 m1 = i;
             }
         }
+
         for (int i = 1; i < a.length; i++) {
             if (a[i] > verdi) {
                 verdi = a[i];
