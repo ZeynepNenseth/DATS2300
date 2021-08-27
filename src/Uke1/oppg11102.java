@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class oppg11102 {
-    public static int[] sortertTabell(int n) {
+    public static int[] sortertTabell(int n) { // gjør samme ting som Arrays.setAll()
         int[] sortert = new int[n];
         sortert[0] = 1;
         for (int i = 1; i < n; i++) {
