@@ -3,10 +3,13 @@ package Uke2;
 import java.util.*;
 
 public class Tabell { // Samleklasse for tabellmetoder
-    private Tabell() {}
+    private Tabell() {
+    }
 
     public static void bytt(int[] a, int i, int j) {
-        int temp = a[i]; a[i] = a[j]; a[j] = temp;
+        int temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
     }
 
     public static int[] randPerm(int n) { // en effektiv versjon
@@ -16,8 +19,8 @@ public class Tabell { // Samleklasse for tabellmetoder
         Arrays.setAll(a, i -> i + 1);    // legger inn tallene 1, 2, . , n
 
         for (int k = n - 1; k > 0; k--) {  // løkke som går n - 1 ganger
-            int i = r.nextInt(k+1);        // en tilfeldig tall fra 0 til k
-            bytt(a,k,i);                   // bytter om
+            int i = r.nextInt(k + 1);        // en tilfeldig tall fra 0 til k
+            bytt(a, k, i);                   // bytter om
         }
         return a;                        // permutasjonen returneres
     }
@@ -27,14 +30,12 @@ public class Tabell { // Samleklasse for tabellmetoder
 
         for (int k = a.length - 1; k > 0; k--) {
             int i = r.nextInt(k + 1);  // tilfeldig tall fra [0,k]
-            bytt(a,k,i);
+            bytt(a, k, i);
         }
     }
 
     public static int maks1(int[] a, int fra, int til) {
-        if (fra < 0 || til > a.length || fra >= til) {
-            throw new IllegalArgumentException("Illegalt intervall!");
-        }
+        fratilKontroll(a.length, fra, til);
 
         int m = fra;              // indeks til største verdi i a[fra:til>
         int maksverdi = a[fra];   // største verdi i a[fra:til>
@@ -49,7 +50,7 @@ public class Tabell { // Samleklasse for tabellmetoder
     }
 
     public static int maks(int[] a) { // bruker hele tabellen
-        return maks1(a,0,a.length);     // kaller metoden over
+        return maks1(a, 0, a.length);     // kaller metoden over
     }
 
     public static int min1(int[] a, int fra, int til) { //halvåpent array a[fra:til), dvs "til" er ikke med
@@ -73,13 +74,13 @@ public class Tabell { // Samleklasse for tabellmetoder
         return min1(a, 0, a.length); // kaller metoden over
     }
 
-    public static void bytt2(char[] c, int i , int j) {
+    public static void bytt2(char[] c, int i, int j) {
         char temp = c[i];
         c[i] = c[j];
         c[j] = temp;
     }
 
-    public static void skriv(int[] a, int fra,  int til) {
+    public static void skriv(int[] a, int fra, int til) {
         for (int i = fra; i < til - 1; i++) {
             //if (i != til-1 ) du kunne legge til en if til men det blir ikke effektiv
             System.out.print(a[i] + " ");
@@ -99,7 +100,7 @@ public class Tabell { // Samleklasse for tabellmetoder
         /* skriv(a, 0, a.length) men du kan få stackoverflow hvis du kaller mange metoder over metoder*/
     }
 
-    public static void skrivln(int[] a, int fra,  int til) {
+    public static void skrivln(int[] a, int fra, int til) {
         for (int i = fra; i < til - 1; i++) {
             //if (i != til-1 ) du kunne legge til en if til men det blir ikke effektiv
             System.out.print(a[i] + " ");
@@ -118,4 +119,51 @@ public class Tabell { // Samleklasse for tabellmetoder
         System.out.print(a[a.length - 1] + "\n");
         /* skriv(a, 0, a.length) men du kan få stackoverflow hvis du kaller mange metoder over metoder*/
     }
+
+    public static void fratilKontroll(int tablengde, int fra, int til) {
+        if (fra < 0) { // fra er negativ
+            throw new ArrayIndexOutOfBoundsException("fra(" + fra + ") er negativ!");
+        }
+
+        if (til > tablengde) { // til er utenfor tabellen
+            throw new ArrayIndexOutOfBoundsException("til(" + til + ") > tablengde(" + tablengde + ")");
+        }
+
+        if (fra > til) { // fra er større enn til
+            throw new IllegalArgumentException("fra(" + fra + ") > til(" + til + ") - illegalt intervall!");
+        }
+
+        if (fra == til) {
+            throw new NoSuchElementException("fra(" + fra + ") = til(" + til + ") - tomt tabellintervall!");
+        }
+
+    public static void vhKontroll(int tablengde, int v, int h) {
+        if (v < 0) {
+            throw new ArrayIndexOutOfBoundsException("v(" + v + ") < 0");
+        }
+
+        if (h >= tablengde) {
+            throw new ArrayIndexOutOfBoundsException("h(" + h + ") >= tablengde(" + tablengde + ")");
+        }
+
+        if (v > h + 1) {
+            throw new IllegalArgumentException("v = " + v + ", h = " + h);
+        }
+
+        /* Arrays + trykk ctrl og mus og kommer inn i java klassen Arrays, check der for "rangeCheck():
+        static void rangeCheck(int arrayLength, int fromIndex, int toIndex) {
+        if (fromIndex > toIndex) { fra må alltid være mindre enn til
+            throw new IllegalArgumentException(
+                "fromIndex(" + fromIndex + ") > toIndex(" + toIndex + ")");
+        }
+        if (fromIndex < 0) { // tom array
+            throw new ArrayIndexOutOfBoundsException(fromIndex);
+        }
+        if (toIndex > arrayLength) { indeksen går ut av arrayet
+            throw new ArrayIndexOutOfBoundsException(toIndex);
+        }
+    }
+         */
+    }
 }
+
