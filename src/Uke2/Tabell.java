@@ -80,6 +80,42 @@ public class Tabell { // Samleklasse for tabellmetoder
     }
 
     public static void skriv(int[] a, int fra,  int til) {
+        for (int i = fra; i < til - 1; i++) {
+            //if (i != til-1 ) du kunne legge til en if til men det blir ikke effektiv
+            System.out.print(a[i] + " ");
+        }
+        System.out.print(a[til - 1]);
+        /* int[] b = Arrays.copyOfRange(a, fra, til); // lager en kopi av arrayet a[fra:til) ikke relevant her
+        for (int i : b) {
+            System.out.println(i + " ");
+        }*/
+    }
 
+    public static void skriv(int[] a) {
+        for (int i = 0; i < a.length - 1; i++) {
+            System.out.print(a[i] + " ");
+        }
+        System.out.print(a[a.length - 1]);
+        /* skriv(a, 0, a.length) men du kan få stackoverflow hvis du kaller mange metoder over metoder*/
+    }
+
+    public static void skrivln(int[] a, int fra,  int til) {
+        for (int i = fra; i < til - 1; i++) {
+            //if (i != til-1 ) du kunne legge til en if til men det blir ikke effektiv
+            System.out.print(a[i] + " ");
+        }
+        System.out.print(a[til - 1] + "\n");
+        /* int[] b = Arrays.copyOfRange(a, fra, til); // lager en kopi av arrayet a[fra:til) ikke relevant her
+        for (int i : b) {
+            System.out.println(i + " ");
+        }*/
+    }
+
+    public static void skrivln(int[] a) {
+        for (int i = 0; i < a.length - 1; i++) {
+            System.out.print(a[i] + " ");
+        }
+        System.out.print(a[a.length - 1] + "\n");
+        /* skriv(a, 0, a.length) men du kan få stackoverflow hvis du kaller mange metoder over metoder*/
     }
 }
