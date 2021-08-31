@@ -34,7 +34,7 @@ public class Tabell { // Samleklasse for tabellmetoder
         }
     }
 
-    public static int maks1(int[] a, int fra, int til) {
+    public static int maks(int[] a, int fra, int til) {
         fratilKontroll(a.length, fra, til);
         if (a.length == 0) {
             throw new NullPointerException("Tom tabell!");
@@ -53,10 +53,10 @@ public class Tabell { // Samleklasse for tabellmetoder
     }
 
     public static int maks(int[] a) { // bruker hele tabellen
-        return maks1(a, 0, a.length);     // kaller metoden over
+        return maks(a, 0, a.length);     // kaller metoden over
     }
 
-    public static int min1(int[] a, int fra, int til) { //halvåpent array a[fra:til), dvs "til" er ikke med
+    public static int min(int[] a, int fra, int til) { //halvåpent array a[fra:til), dvs "til" er ikke med
         if (fra < 0 || til > a.length || fra >= til) {
             throw new IllegalArgumentException("Illegalt intervall");
         }
@@ -74,7 +74,7 @@ public class Tabell { // Samleklasse for tabellmetoder
     }
 
     public static int min(int[] a) { // bruker hele arrayet
-        return min1(a, 0, a.length); // kaller metoden over
+        return min(a, 0, a.length); // kaller metoden over
     }
 
     public static void bytt2(char[] c, int i, int j) {
@@ -201,10 +201,50 @@ public class Tabell { // Samleklasse for tabellmetoder
 
     public static int[] naturligeTall(int n) {
         int[] a = new int[n];
+       /* if (n < 1) {
+            throw new ArrayIndexOutOfBoundsException("n må være større enn eller lik 1!");
+        }*/ // NegativeArraysizeException??
+        fratilKontroll(n,1, n); // n i plassen til "til" representerer indeksen og ikke verdien re
         for (int i = 0; i < n; i++) {
-            a[i] += i;
+            a[i] = i + 1;
         }
         return a;
+    }
+
+    public static int[] heleTall(int fra, int til) {
+        /*if (fra > til) {
+            throw new IllegalArgumentException("fra må være mindre enn til!");
+        }
+        if (fra == til) {
+            throw new NoSuchElementException("Tom tabell!");
+        }*/
+        int[] a = new int[til - fra];
+       // fratilKontroll(a.length,fra,til);
+        a[0] = fra;
+        for (int i = 1; i < a.length; i++) {
+            a[i] = a[i-1] + 1;
+        }
+        return a;
+    }
+
+    public static int[] nestMaks(int[] a) {
+        int n = a.length;   // tabellens lengde
+        if (n < 2) {
+            throw new NoSuchElementException("a.length(" + n + ") < 2!");// må ha minst to verdier!
+        }
+
+        int m = maks(a);  // m er posisjonen til tabellens største verdi
+        int nm;           // nm skal inneholde posisjonen til nest største verdi
+        if (m == 0) {                          // den største ligger først
+            nm = maks(a, 1, n);                  // leter i a[1:n>
+        } else if (m == n - 1) {                   // den største ligger bakerst
+            nm = maks(a, 0, n - 1);              // leter i a[0:n-1>
+        } else {
+            int mv = maks(a, 0, m);              // leter i a[0:m>
+            int mh = maks(a, m + 1, n);          // leter i a[m+1:n>
+            nm = a[mh] > a[mv] ? mh : mv;        // hvem er størst?
+        }
+        return new int[] {m,nm};      // m i posisjon 0 , nm i posisjon 1
     }
 }
 
