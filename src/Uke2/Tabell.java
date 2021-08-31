@@ -36,6 +36,9 @@ public class Tabell { // Samleklasse for tabellmetoder
 
     public static int maks1(int[] a, int fra, int til) {
         fratilKontroll(a.length, fra, til);
+        if (a.length == 0) {
+            throw new NullPointerException("Tom tabell!");
+        }
 
         int m = fra;              // indeks til største verdi i a[fra:til>
         int maksverdi = a[fra];   // største verdi i a[fra:til>
@@ -136,6 +139,7 @@ public class Tabell { // Samleklasse for tabellmetoder
         if (fra == til) {
             throw new NoSuchElementException("fra(" + fra + ") = til(" + til + ") - tomt tabellintervall!");
         }
+    }
 
     public static void vhKontroll(int tablengde, int v, int h) {
         if (v < 0) {
@@ -164,6 +168,43 @@ public class Tabell { // Samleklasse for tabellmetoder
         }
     }
          */
+    }
+
+    public static void skrivChar(char[] c, int fra, int til) {
+        for (int i = fra; i < til - 1; i++) {
+            System.out.print(c[i] + " ");
+        }
+        System.out.print(c[til - 1]);
+    }
+
+    public static void skrivChar(char[] c) {
+        for (int i = 0; i < c.length - 1; i++) {
+            System.out.print(c[i] + " ");
+        }
+        System.out.print(c[c.length - 1]);
+        /* skriv(a, 0, a.length) men du kan få stackoverflow hvis du kaller mange metoder over metoder*/
+    }
+
+    public static void skrivlnChar(char[] c, int fra, int til) {
+        for (int i = fra; i < til - 1; i++) {
+            System.out.print(c[i] + " ");
+        }
+        System.out.print(c[til - 1] + "\n");
+    }
+
+    public static void skrivlnChar(char[] c) {
+        for (int i = 0; i < c.length - 1; i++) {
+            System.out.print(c[i] + " ");
+        }
+        System.out.print(c[c.length - 1] + "\n");
+    }
+
+    public static int[] naturligeTall(int n) {
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] += i;
+        }
+        return a;
     }
 }
 
