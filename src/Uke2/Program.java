@@ -5,7 +5,7 @@ import java.util.Arrays;
 // trenger ikke "import hjelpeklasser.*;" public klassene ligger under samme package
 public class Program {
     public static void main(String[] args) { // hovedprogram
-        int[] a = Tabell.randPerm(20); // lager en tilfeldig array med tallene 1-20
+       /* int[] a = Tabell.randPerm(20); // lager en tilfeldig array med tallene 1-20
         int[] b = Tabell.nestMaks(a);  // metoden returnerer en tabell med største og nest største tall i a
 
         int m = b[0], nm = b[1];       // m for maks, nm for nestmaks
@@ -31,5 +31,11 @@ public class Program {
         System.out.println(Arrays.toString(Tabell.heleTall(7,3)));
         System.out.println(Arrays.toString(Tabell.naturligeTall(6)));
         System.out.println(Arrays.toString(Tabell.naturligeTall(-1)));*/
-        } // avslutt main
-    } // avslutt class Program
+
+        int [] d = {12,9,3,21, 17, 5, 8, 10, 13, 2};
+        Tabell.sortering(d);
+
+        }
+
+
+}

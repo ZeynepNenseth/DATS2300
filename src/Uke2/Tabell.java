@@ -246,5 +246,86 @@ public class Tabell { // Samleklasse for tabellmetoder
         }
         return new int[] {m,nm};      // m i posisjon 0 , nm i posisjon 1
     }
+
+    public static int[] nestMaksF(int[] a) {
+        int n = a.length;   // tabellens lengde
+        if (n < 2) {
+            throw new NoSuchElementException("a.length(" + n + ") < 2!");// må ha minst to verdier!
+        }
+
+        int m = maks(a);  // m er posisjonen til tabellens største verdi
+        int nm;           // nm skal inneholde posisjonen til nest største verdi
+        bytt(a, 0, m); // har største verdi indeks 0
+
+        nm = maks(a, 1, n);                  // leter i a[1:n>
+        bytt(a, 0, m);
+//Det blir et spesialtilfelle her når den nest største verdien ligger forrest i tabellen.
+        return new int[] {m,nm};      // m i posisjon 0 , nm i posisjon 1
+    }
+
+    public static int[] nestMaksB(int[] a) {
+        int n = a.length;   // tabellens lengde
+        if (n < 2) {
+            throw new NoSuchElementException("a.length(" + n + ") < 2!");// må ha minst to verdier!
+        }
+
+        int m = maks(a);  // m er posisjonen til tabellens største verdi
+        int nm;           // nm skal inneholde posisjonen til nest største verdi
+        bytt(a, n-1, m); // har største verdi i siste indeks
+
+        nm = maks(a, 0, n-2);                  // leter i a[0:n-2>
+        bytt(a, 0, m);
+//Det blir et spesialtilfelle her når den nest største verdien ligger bakerst i tabellen.
+        return new int[] {m,nm};      // m i posisjon 0 , nm i posisjon 1
+    }
+    public static void sortering(int[] a) {
+        int n = a.length;   // tabellens lengde
+        if (n < 2) {
+            throw new NoSuchElementException("a.length(" + n + ") < 2!");
+        }
+        int m = maks(a);
+        bytt(a, n-1, m);
+
+        int nextMax;
+        for (int k = n-2; k > 0; k--) {
+            nextMax = maks(a, 0, n-2); //funker ikke med k
+            int temp = a[k];
+            a[k] = a[nextMax];
+            a[nextMax] = temp;
+        }
+        System.out.println(Arrays.toString(a));
+    }
+
+    public static int[] nestMaksNy(int[] a) {// ny versjon, bruker færrest mulig operasjoner når tabellen desc=baklengs sortert
+        int n = a.length;
+        if (n < 2) throw new java.util.NoSuchElementException("a.length(" + n + ") < 2!");
+
+        int m = 0;      // m er posisjonen til største verdi
+        int nm = 1;     // nm er posisjonen til nest største verdi
+
+        // bytter om m og nm hvis a[1] er større enn a[0]
+        if (a[1] > a[0]) { // gjør sammenlikning  1 gang
+            m = 1; nm = 0;
+        }
+
+        int maksverdi = a[m];                // største verdi
+        int nestmaksverdi = a[nm];           // nest største verdi
+
+        for (int i = 2; i < n; i++) {
+            if (a[i] > nestmaksverdi) { // gjør sammenlikning  n-2 ganger
+                if (a[i] > maksverdi) { // gjør sammenlikning  n-2 ganger
+                    nm = m;
+                    nestmaksverdi = maksverdi;     // ny nest størst
+
+                    m = i;
+                    maksverdi = a[m];              // ny størst
+                } else {
+                    nm = i;
+                    nestmaksverdi = a[nm];         // ny nest størst
+                }
+            }
+        } // total sammenlikning = 1 + n - 2 + n - 2 = 2n - 3
+        return new int[] {m,nm};    // n i posisjon 0, nm i posisjon 1
+    }
 }
 

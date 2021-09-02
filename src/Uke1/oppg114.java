@@ -33,3 +33,8 @@ public class oppg114 {
         return m; // returnerer indeks/posisjonen til største verdi
     } // antall grunleggende operasjoner = 1 + 2 + 1 + 10 + 9 + 18 + 18 + 9 = 68
 }
+/*
+Det er ingen forskjell på gjennomsnittlig effektivitet, effektiviteten i det mest ugunstige tilfellet
+og effektiviteten i det beste tilfellet for maks-metoden, dvs. for den metoden som finner posisjonen
+til den største verdien i en tabell fordi vi må løpe gjennom tabellen uansett.
+ */
