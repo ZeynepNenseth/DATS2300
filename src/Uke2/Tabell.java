@@ -219,7 +219,6 @@ public class Tabell { // Samleklasse for tabellmetoder
             throw new NoSuchElementException("Tom tabell!");
         }*/
         int[] a = new int[til - fra];
-       // fratilKontroll(a.length,fra,til);
         a[0] = fra;
         for (int i = 1; i < a.length; i++) {
             a[i] = a[i-1] + 1;
@@ -257,10 +256,12 @@ public class Tabell { // Samleklasse for tabellmetoder
         int nm;           // nm skal inneholde posisjonen til nest største verdi
         bytt(a, 0, m); // har største verdi indeks 0
 
-        nm = maks(a, 1, n);                  // leter i a[1:n>
+        nm = maks(a, 1, n);// leter i a[1:n>
+        if (nm == m) { // spesialtilfelle her når den nest største verdien ligger forrest i tabellen.
+            nm = 0;
+        }
         bytt(a, 0, m);
-//Det blir et spesialtilfelle her når den nest største verdien ligger forrest i tabellen.
-        return new int[] {m,nm};      // m i posisjon 0 , nm i posisjon 1
+        return new int[] {m,nm}; // indeksen til største tall=m i posisjon 0 , nm i posisjon 1
     }
 
     public static int[] nestMaksB(int[] a) {
@@ -273,9 +274,12 @@ public class Tabell { // Samleklasse for tabellmetoder
         int nm;           // nm skal inneholde posisjonen til nest største verdi
         bytt(a, n-1, m); // har største verdi i siste indeks
 
-        nm = maks(a, 0, n-2);                  // leter i a[0:n-2>
+        nm = maks(a, 0, n-2); // leter i a[0:n-2>
+
+        if (nm == m) { // spesialtilfelle her når den nest største verdien ligger bakerst i tabellen.
+            nm = n-1;
+        }
         bytt(a, 0, m);
-//Det blir et spesialtilfelle her når den nest største verdien ligger bakerst i tabellen.
         return new int[] {m,nm};      // m i posisjon 0 , nm i posisjon 1
     }
     public static void sortering(int[] a) {
@@ -287,13 +291,21 @@ public class Tabell { // Samleklasse for tabellmetoder
         bytt(a, n-1, m);
 
         int nextMax;
-        for (int k = n-2; k > 0; k--) {
+        for (int k = n-2; k > 1; k--) {
+            /*
             nextMax = maks(a, 0, n-2); //funker ikke med k
             int temp = a[k];
             a[k] = a[nextMax];
-            a[nextMax] = temp;
+            a[nextMax] = temp;*/
+            m = maks(a, 0, k);
+            bytt(a, m, k);
+            System.out.println(Arrays.toString(a));
         }
         System.out.println(Arrays.toString(a));
+    }
+
+    public static void main(String[] args) {
+
     }
 
     public static int[] nestMaksNy(int[] a) {// ny versjon, bruker færrest mulig operasjoner når tabellen desc=baklengs sortert
