@@ -360,5 +360,22 @@ public class Tabell { // Samleklasse for tabellmetoder
         bytt(a,i,j); snu(a,i + 1); // bytter og snur
         return true; // en ny permutasjon
     }
+
+    public static int inversjoner(int[] a) {
+        int antall = 0;
+        for (int i = 0; i < a.length - 1; i++) {
+            for (int j = i + 1; j < a.length; j++) { // hvis den starter fra 1 blir det helt feil
+                if (a[i] > a[j]) {
+                    antall++;
+                }
+            }
+        }
+        return antall;
+    }
+    public static void utvalgssortering(int[] a) {
+        for (int i = 0; i < a.length - 1; i++) {
+            bytt(a, i, min(a, i, a.length));
+        }
+    }
 }
 
