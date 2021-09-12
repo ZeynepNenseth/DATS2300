@@ -372,10 +372,21 @@ public class Tabell { // Samleklasse for tabellmetoder
         }
         return antall;
     }
+
     public static void utvalgssortering(int[] a) {
         for (int i = 0; i < a.length - 1; i++) {
             bytt(a, i, min(a, i, a.length));
         }
     }
+
+    public static int lineærsøk(int[] a, int verdi) {
+        if (a.length == 0 || verdi > a[a.length - 1]) {
+            return -(a.length + 1);  // verdi er større enn den største
+        }
+        int i = 0;
+        for (; a[i] < verdi; i++);   // siste verdi er vaktpost
+        return verdi == a[i] ? i : -(i + 1);   // sjekker innholdet i a[i]
+    }
+    //Det finnes ingen mer effektiv teknikk enn den i Programkode 1.3.5 a) for å søke i en usortert tabell
 }
 
