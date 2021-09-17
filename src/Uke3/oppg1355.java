@@ -30,7 +30,7 @@ public class oppg1355 {
         return -1;
     }
     //I den vanlige lineærsøk-metoden er algoritmen av orden O(n^2) siden det er 2 for-løkker inn i hverandre. Hvis vi setter k til
-    //kvadratroten av array lengden (n) så, hopper så så mye som kvadratroten til n. Tror orden blir redusert til av n istedenfor n^2
+    //kvadratroten av array lengden (n) så, hopper så så mye som kvadratroten til n. Tror orden blir kvadrot (n)
 
     public static int kvadratrotsøk(int[] a, int verdi) {
         if (a.length == 0 || verdi > a[a.length - 1]) {

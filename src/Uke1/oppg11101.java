@@ -87,6 +87,24 @@ public class oppg11101 {
         }
     } // maks
 
+    public static int maks4(int[] a) {
+        if (a.length < 1) {
+            throw new java.util.NoSuchElementException("Arrayet er tom!");
+        }
+
+        int i;
+
+        //Øvre grensen er "<=" a.length-2 fordi den siste indeksen er lenght-1 men i+1 må fortsatt være innafor arrayet
+        for (i = 0; i <= a.length-2; i++) {
+            if (a[i] > a[i+1]) {             //sammenligner a[0] og a[1] i første omgang
+                int temp = a[i+1];           // hvis a[1]>a[0], så bytter man plassen av verdiene med å lagre den ene i en temp verdi
+                a[i+1] = a[i];
+                a[i] = temp;
+            }
+        }
+        return a[i];
+    }
+
     public static void main(String[] args) {   // hovedprogram
         int n = 100_000, antall = 2_000; // tabellstørrelse og gjentagelser
         long tid = 0;                    // for tidsmåling
@@ -111,6 +129,11 @@ public class oppg11101 {
         for (int i = 0; i < antall; i++) maks3(a);  // Programkode 1.1.5
         tid = System.currentTimeMillis() - tid;     // medgått tid
         System.out.println("Maks3-metoden: " + tid + " millisek");
+
+        tid = System.currentTimeMillis();    // leser av klokken
+        for (int i = 0; i < antall; i++) maks4(a);  // Programkode 1.1.5
+        tid = System.currentTimeMillis() - tid;     // medgått tid
+        System.out.println("Maks4-metoden: " + tid + " millisek");
     }
 }
 

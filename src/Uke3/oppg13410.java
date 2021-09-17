@@ -18,4 +18,4 @@ public class oppg13410 {
         }
     }
 }
-//selectionSort er en stabil algortime siden like like verdier har samme innbyrdes rekkefølge etter sorteringen som de hadde før.
+//selectionSort er en stabil algortime siden like verdier har samme innbyrdes rekkefølge etter sorteringen som de hadde før.

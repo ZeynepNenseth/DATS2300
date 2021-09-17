@@ -419,5 +419,31 @@ public class Tabell { // Samleklasse for tabellmetoder
         else if (verdi == a[v]) return v;            // funnet
         else  return -(v + 2);                       // ikke funnet
     }
+
+    public static int maks(double[] a) {
+        int m = 0;                           // indeks til største verdi
+        double maksverdi = a[0];             // største verdi
+
+        for (int i = 1; i < a.length; i++) {
+            if (a[i] > maksverdi) {
+                maksverdi = a[i];     // største verdi oppdateres
+                m = i;                // indeks til største verdi oppdaters
+            }
+        }
+        return m;                     // returnerer posisjonen til største verdi
+    }
+
+    public static int maks(String[] a) {
+        int m = 0;                          // indeks til største verdi
+        String maksverdi = a[0];            // største verdi
+
+        for (int i = 1; i < a.length; i++) {
+            if (a[i].compareTo(maksverdi) > 0) {
+                maksverdi = a[i];  // største verdi oppdateres
+                m = i;             // indeks til største verdi oppdaters
+            }
+        }
+        return m;                   // returnerer posisjonen til største verdi
+    }
 }
 

@@ -21,7 +21,7 @@ public class oppg1349 {
             throw new ArrayIndexOutOfBoundsException("til(" + til + ") >= tabellengde(" + a.length + ")");
         }
 
-        if (fra >= til + 1) {
+        if (fra >= til) {
             throw new IllegalArgumentException("fra = " + fra + ", til = " + til);
         }
 

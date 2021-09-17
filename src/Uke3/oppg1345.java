@@ -15,17 +15,22 @@ public class oppg1345 {
     }
     public static void selectionsort(int[] a) {
         for (int i = 0; i < a.length - 1; i++) {
-            for (int j = i + 1; j < a.length; j++) {
-                if (a[j] < a[i]) {
-                    int temp = a[i];
-                    a[i] = a[j];
-                    a[j] = temp;
+            int minverdi = a[i]; // minste verdi oppdateres
+            int m = i;
+            // Tabell.bytt(a, i, Tabell.min(a, i, a.length));
+            //finner min
+            for (int j = i + 1  ; j < a.length; j++) {
+                if (a[j] < minverdi) {
+                    m = j; // indeks til minste verdi oppdateres
+                    minverdi = a[j]; // minste verdi oppdateres
                 }
             }
+            int temp = a[i];
+            a[i] = a[m];
+            a[m] = temp;
         }
-       /* for (int k = 0; k < a.length - 1; k++) {
-            System.out.print(a[k] + ", ");
-        }
-        System.out.print(a[a.length - 1]);*/
+        // m representerer index til minsteverdi nå
+
+
     }
 }
