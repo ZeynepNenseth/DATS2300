@@ -342,7 +342,6 @@ public class Tabell { // Samleklasse for tabellmetoder
     public static void snu(int[] a, int v, int h) { // snur intervallet a[v:h]
         while (v < h) bytt(a, v++, h--);
     }
-
     public static void snu(int[] a, int v) { // snur fra og med v og ut tabellen
         snu(a, v, a.length - 1);
     }
