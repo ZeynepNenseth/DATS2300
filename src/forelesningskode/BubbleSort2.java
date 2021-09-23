@@ -1,4 +1,4 @@
-package Uke2;
+package forelesningskode;
 
 import java.util.Arrays;
 

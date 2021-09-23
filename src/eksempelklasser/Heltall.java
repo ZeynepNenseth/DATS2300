@@ -15,7 +15,9 @@ public final class Heltall implements Comparable<Heltall> {
 
     }
     private final int verdi;    // et heltall som instansvariabel
-
+// Heltall h1 = new Heltall(3);
+    // Heltall h2 = new Heltall(5);
+    // h1.compareTo(h2);
     public Heltall(int verdi) { this.verdi = verdi; }   // konstruktør
 
     public int intVerdi() { return verdi; }             // aksessor

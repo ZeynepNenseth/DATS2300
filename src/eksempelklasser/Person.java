@@ -34,11 +34,19 @@ public class Person implements Comparable<Person> {
         Stream s = Arrays.stream(p);
         Optional<Person> resultat = s.max(Comparator.naturalOrder());
         resultat.ifPresent(System.out::println);
+
+        //1.4.4.2g)
+        boolean h = p[0].hashCode() == p[4].hashCode();
+        System.out.println(h); // false
+        // selv hvis fornavn og etternavn hadde vært det samme, så er det fortsatt false fordi de er forskellige objekter.
     }
     private final String fornavn;         // personens fornavn
     private final String etternavn;       // personens etternavn
 
     public Person(String fornavn, String etternavn) {  // konstruktør
+        //if (fornavn != null) {
+        //this.fornavn = fornavn;
+        //} else throw new Null
         Objects.requireNonNull(fornavn, "fornavn er null");
         Objects.requireNonNull(etternavn, "etternavn er null");
 

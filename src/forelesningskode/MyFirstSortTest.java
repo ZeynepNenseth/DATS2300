@@ -1,4 +1,6 @@
-package Uke2;
+package forelesningskode;
+
+import forelesningskode.MyFirstSort;
 
 import static org.junit.jupiter.api.Assertions.*;
 
