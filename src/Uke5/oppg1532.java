@@ -15,4 +15,7 @@ public class oppg1532 {
 }
 // Krav 1 er oppfyllt siden metoden bruker to rekursive metoder.
 // Krav 2 er oppfyllt siden avstanden mellom v og h blir mindre, dvs, metoden jobber seg mot et basistilfelle.
-// Hvis vi kaller på metoden v == 0 og h == a.length-1, blir
+// Metoden halverer antall numre i hver runde av metodekall. Hvis vi kaller på metoden med n antall av tall,
+// så får man større enn log 2 (n) lag på programstakken.
+// Hvis metoden kalles med v = 0 og h = a.length-1, vil maksimal rekursjonsdybde bli ⌈log2(n)⌉ + 1 der n = a.length.
+// n lenggden til arrayet.
