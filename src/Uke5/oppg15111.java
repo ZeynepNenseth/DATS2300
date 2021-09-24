@@ -14,4 +14,4 @@ public class oppg15111 {
 //fib(30) = 832040
 //fib(40) = 102334155
 
-//fib(50) = klarer ikke å beregne
+//fib(50) = programmet klarer ikke å beregne
