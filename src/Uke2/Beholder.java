@@ -25,4 +25,4 @@ public interface Beholder<T> extends Iterable<T>  // ny versjon
         }
         return fjernet;
     }
-} // grensesnitt Beholder
+}
