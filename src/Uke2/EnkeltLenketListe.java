@@ -36,8 +36,11 @@ public class EnkeltLenketListe<T> implements Liste<T> {
             hale = p;
         }
 
-        /*Node<T> p = hode;
-        for (int i = 0; i < antall; i++) {
+        /*
+        Node<T> ny = new Node<>();
+        ny.neste = a[1]
+        Node<T> p = hode;
+        for (int i = 0; i < a.length; i++) {
             if (a[i] != null) {
             p.verdi = a[i];
             p = p.neste;
