@@ -172,7 +172,7 @@ public class TabellStakk<T> implements Stakk<T>
     public static <T> void sorter(Stakk<T> A, Comparator<? super T> c) { // sorterer objektene på A vha. komparatoren c
         Stakk<T> B = new TabellStakk<>();
         T temp;
-        int n = 0;
+        int n;
 
         while (!A.tom()) {
             temp = A.taUt();
@@ -181,6 +181,7 @@ public class TabellStakk<T> implements Stakk<T>
                 n++;
                 A.leggInn(B.taUt());
             }
+
             B.leggInn(temp);
             for (int i = 0; i < n; i++) {
                 B.leggInn(A.taUt());
@@ -208,13 +209,15 @@ public class TabellStakk<T> implements Stakk<T>
 
 
         Stakk<Integer> s1 = new TabellStakk<>();
+        TallKomparator c = new TallKomparator();
         s1.leggInn(2);
         s1.leggInn(1);
         s1.leggInn(4);
         s1.leggInn(5);
         s1.leggInn(3);
         System.out.println(s1.toString());
-        //sorter(s1, c);
+        sorter(s1, c);
+        System.out.println(s1.toString());
     }
 
 
