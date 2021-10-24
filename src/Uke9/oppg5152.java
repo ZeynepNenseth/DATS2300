@@ -1,6 +1,9 @@
 package Uke9;
 
 import Uke2.BinTre;
+import Uke2.Liste;
+import Uke2.Oppgave;
+import Uke2.TabellListe;
 
 import java.util.Arrays;
 
@@ -24,6 +27,15 @@ public class oppg5152 {
         for (int i = 0; i < verdi2.length; i++) {
             tre2.leggInn(posisjon2[i], verdi2[i]);
         }
-        System.out.print(Arrays.toString(verdi2));
+        System.out.print(Arrays.toString(verdi2) + "\n");
+
+        // tre2.nivåorden(c -> System.out.print(c + " ")); // funker
+
+        /*Liste<Character> liste = new TabellListe<>();  // en liste
+        tre2.nivåorden(c -> liste.leggInn(c));          // lambda-uttrykk som argument
+        System.out.println(liste);                     // skriver ut listen; funker*/
+
+        tre2.nivåorden(Oppgave.konsollutskrift().deretter(c -> System.out.print(' ')));
+
     }
 }
