@@ -117,8 +117,8 @@ public class BinTre<T> {                          // et generisk binærtre
         Node<T> p = rot; // nodereferanser = hjelpepekere
         Node<T> q = null;
         int filter = Integer.highestOneBit(posisjon >> 1);  // filter = 100..00 binært siffer
-        while (p != null && filter > 0) {
-            q = p;
+        while (p != null && filter > 0) {         // her går vi gjennom treet via bitsekvensen
+            q = p;                               // vi må bruke highestOneBit pga posisjon gitt som parameter
             p = (filter & posisjon) == 0 ? p.venstre : p.høyre;
             filter >>= 1;
         }
@@ -153,6 +153,7 @@ public class BinTre<T> {                          // et generisk binærtre
     }
 
     public int[] nivåer() {  // returnerer en tabell som inneholder nivåantallene
+        // nivåer() metoden ser at vi har et bygget tre for metoden er i BinTre klassen
         if (tom()) return new int[0];       // en tom tabell for et tomt tre
 
         int[] a = new int[8];               // hjelpetabell
