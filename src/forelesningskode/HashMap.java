@@ -5,15 +5,12 @@ import java.util.LinkedList;
 
 public class HashMap {
     public static void main(String[] args) {
-        System.out.println("Hashmap test");
-
         int hash_map_size = 7;
         ArrayList<LinkedList<String>> hash_map = new ArrayList<>(hash_map_size);
 
         for (int i=0; i<hash_map_size; ++i) {
             hash_map.add(i, new LinkedList<>());
         }
-
 
         //Lager test-strenger
         String[] strings = new String[5];
@@ -25,9 +22,9 @@ public class HashMap {
 
         //Legg inn test-strenger i hashmap'et
         for (int i=0; i<strings.length; ++i) {
-            int hash = hash(strings[i]);
+            int hash = hash(strings[i]);          // hash er et stort heltall
             int hash_map_index = computeHashmapIndex(hash, hash_map_size);
-            System.out.println("Legger inn " + strings[i] + " med hash " + hash + " på plass " + hash_map_index);
+            System.out.println("Legger inn '" + strings[i] + "' med hash " + hash + " på plass " + hash_map_index);
             hash_map.get(hash_map_index).addFirst(strings[i]);
         }
 
@@ -62,3 +59,12 @@ public class HashMap {
         return hash;
     }
 }
+ /*
+Legger inn Hei med hash 3227348 på plass 5
+Legger inn På deg din gamle sjokolade med hash 1176180418 på plass 0
+Legger inn Peder med hash 934889820 på plass 4
+Legger inn Test med hash 110654066 på plass 5
+Legger inn Hallo med hash 1014078390 på plass 3
+Strengen Test finnes i hashmap'et: true
+
+  */
